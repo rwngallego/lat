@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<routes>
+	<entry id="login">
+		<uri>/login</uri>
+		<res>nomicent:index:login</res>
+	</entry>
+	<entry id="logout">
+		<uri>/logout</uri>
+		<res>nomicent:index:logout</res>
+	</entry>
+	<entry id="home">
+		<uri>/</uri>
+		<res>nomicent:home:index</res>
+	</entry>
+	<entry id="hello_world">
+		<uri>/hello</uri>
+		<res>main:index:index</res>
+	</entry>
+</routes>
