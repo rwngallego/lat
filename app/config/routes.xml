@@ -1,19 +1,15 @@
 <?xml version="1.0"?>
 <routes>
+	<entry id="welcome">
+		<uri>/</uri>
+		<res>main:index:index</res>
+	</entry>
 	<entry id="login">
 		<uri>/login</uri>
-		<res>nomicent:index:login</res>
+		<res>main:index:login</res>
 	</entry>
 	<entry id="logout">
-		<uri>/logout</uri>
-		<res>nomicent:index:logout</res>
-	</entry>
-	<entry id="home">
-		<uri>/</uri>
-		<res>nomicent:home:index</res>
-	</entry>
-	<entry id="hello_world">
-		<uri>/hello</uri>
-		<res>main:index:index</res>
+		<uri>/logoutUser</uri>
+		<res>main:index:logout</res>
 	</entry>
 </routes>

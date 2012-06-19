@@ -1,0 +1,65 @@
+body{
+	font-family:Verdana, Geneva, sans-serif;
+	background-color:#033;
+	color: #CCC;
+}
+label{
+	display: block;
+}
+
+.common-control{
+	font-family: "Courier New", Courier, monospace;
+	border: 2px solid #F60;
+	color: white;
+	background-color:#000;
+	padding-left: 3px;
+	padding-right: 3px;	
+}
+
+a{
+	color: #6FF;
+}
+a:hover{
+	text-decoration:none;
+	color: #F60;
+}
+
+.centered{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.center-text{
+	text-align: center;
+}
+
+.not-underline{
+	text-decoration: none;
+}
+
+.without-borders{
+	border: 0px solid;
+}
+
+.without-borders td{
+	border: 0px solid;
+}
+
+.orange-text{
+	color: #C90;
+}
+
+.schedule .busy{
+	background-color:#FC0;
+	color: #000;
+}
+
+.menu td{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+th{
+	text-align: left;
+	color: #3C3;
+}
