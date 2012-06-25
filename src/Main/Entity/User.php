@@ -2,187 +2,179 @@
 
 namespace Main\Entity;
 
-/** @entity */
+/**
+ * @entity(repositoryClass="Main\Entity\UserRepository")
+ */
 class User {
-
-    /**
-     * @Id
-     * @Column(type="string", length=50)
-     */
-    private $email;
-
-    //properties
-
-    /** @Column(type="string", length=32) */
-    private $password;
-    
-    /** @Column(type="string", length=180)*/
-    private $name;
-    
-    /** @Column(type="date")*/
-    private $birthdate;
-    
-    /** @Column(type="string", length=1)*/
-    private $gender;
-    
-    /** @Column(type="string", length=25)*/
-    private $phone;
-    
-    /** @Column(type="string", length=32)*/
-    private $imageUniqueId;
-
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     * @return User
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string 
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return User
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set birthdate
-     *
-     * @param date $birthdate
-     * @return User
-     */
-    public function setBirthdate($birthdate)
-    {
-        $this->birthdate = $birthdate;
-        return $this;
-    }
-
-    /**
-     * Get birthdate
-     *
-     * @return date 
-     */
-    public function getBirthdate()
-    {
-        return $this->birthdate;
-    }
-
-    /**
-     * Set gender
-     *
-     * @param string $gender
-     * @return User
-     */
-    public function setGender($gender)
-    {
-        $this->gender = $gender;
-        return $this;
-    }
-
-    /**
-     * Get gender
-     *
-     * @return string 
-     */
-    public function getGender()
-    {
-        return $this->gender;
-    }
-
-    /**
-     * Set phone
-     *
-     * @param string $phone
-     * @return User
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-        return $this;
-    }
-
-    /**
-     * Get phone
-     *
-     * @return string 
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
-     * Set imageUniqueId
-     *
-     * @param string $imageUniqueId
-     * @return User
-     */
-    public function setImageUniqueId($imageUniqueId)
-    {
-        $this->imageUniqueId = $imageUniqueId;
-        return $this;
-    }
-
-    /**
-     * Get imageUniqueId
-     *
-     * @return string 
-     */
-    public function getImageUniqueId()
-    {
-        return $this->imageUniqueId;
-    }
+	
+	/**
+	 * @Id
+	 * @Column(type="integer")
+	 * @GeneratedValue
+	 */
+	protected $id;
+	
+	/**
+	 * @OneToMany(targetEntity="Schedule", mappedBy="user")
+	 */
+	protected $schedules;
+	
+	// properties
+	
+	/**
+	 * @Column(type="string", length=70)
+	 */
+	protected $email;
+	
+	/**
+	 * @Column(type="string", length=32)
+	 */
+	protected $password;
+	
+	/**
+	 * @Column(type="string", length=180)
+	 */
+	protected $name;
+	
+	/**
+	 * @Column(type="datetime")
+	 */
+	protected $lastAccess;
+	
+	/**
+	 * @Column(type="string", length=80)
+	 */
+	protected $role;
+	public function __construct() {
+		$this->schedules = new \Doctrine\Common\Collections\ArrayCollection ();
+	}
+	
+	/**
+	 * Get id
+	 *
+	 * @return integer
+	 */
+	public function getId() {
+		return $this->id;
+	}
+	
+	/**
+	 * Set email
+	 *
+	 * @param string $email        	
+	 * @return User
+	 */
+	public function setEmail($email) {
+		$this->email = $email;
+		return $this;
+	}
+	
+	/**
+	 * Get email
+	 *
+	 * @return string
+	 */
+	public function getEmail() {
+		return $this->email;
+	}
+	
+	/**
+	 * Set password
+	 *
+	 * @param string $password        	
+	 * @return User
+	 */
+	public function setPassword($password) {
+		$this->password = $password;
+		return $this;
+	}
+	
+	/**
+	 * Get password
+	 *
+	 * @return string
+	 */
+	public function getPassword() {
+		return $this->password;
+	}
+	
+	/**
+	 * Set name
+	 *
+	 * @param string $name        	
+	 * @return User
+	 */
+	public function setName($name) {
+		$this->name = $name;
+		return $this;
+	}
+	
+	/**
+	 * Get name
+	 *
+	 * @return string
+	 */
+	public function getName() {
+		return $this->name;
+	}
+	
+	/**
+	 * Set role
+	 *
+	 * @param string $role        	
+	 * @return User
+	 */
+	public function setRole($role) {
+		$this->role = $role;
+		return $this;
+	}
+	
+	/**
+	 * Get role
+	 *
+	 * @return string
+	 */
+	public function getRole() {
+		return $this->role;
+	}
+	
+	/**
+	 * Set lastAccess
+	 *
+	 * @param datetime $lastAccess
+	 * @return User
+	 */
+	public function setLastAccess($lastAccess) {
+		$this->lastAccess = $lastAccess;
+		return $this;
+	}
+	
+	/**
+	 * Get lastAccess
+	 *
+	 * @return string
+	 */
+	public function getLastAccess() {
+		return $this->lastAccess;
+	}
+	
+	/**
+	 * Add schedules
+	 *
+	 * @param Main\Entity\Schedule $schedules        	
+	 * @return User
+	 */
+	public function addSchedule(\Main\Entity\Schedule $schedules) {
+		$this->schedules [] = $schedules;
+		return $this;
+	}
+	
+	/**
+	 * Get schedules
+	 *
+	 * @return Doctrine\Common\Collections\Collection
+	 */
+	public function getSchedules() {
+		return $this->schedules;
+	}
 }

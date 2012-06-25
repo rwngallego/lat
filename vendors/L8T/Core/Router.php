@@ -29,7 +29,13 @@ class Router{
 	 * @return string
 	 */
 	public function getRequestedUri($base_uri){
-		return str_replace($base_uri, "", $_SERVER['REQUEST_URI']);
+		$request_uri = str_replace($base_uri, "", $_SERVER['REQUEST_URI']);
+		$pos = stripos($request_uri, $_SERVER['QUERY_STRING']);
+		if ($pos != 0)
+			$pos--; //strip the "?"
+		else
+			$pos = strlen($request_uri);
+		return substr($request_uri, 0, $pos);
 	}
 
 	/**
@@ -66,12 +72,18 @@ class Router{
 
 		list($module, $controller, $action) = explode(':', $resource, 3);
 
-		$class = ucfirst($module) . "\\Controllers\\" . ucfirst($controller) . "Controller";
+		$class = $module . "\\Controllers\\" . $controller . "Controller";
 		$method = "{$action}Action";
 
+		if (!class_exists($class))
+			throw new \InvalidArgumentException("The class $class does not exist");
+		
 		//create the entity
 		$instance = new $class;
 
+		if (!method_exists($instance, $method))
+			throw new \BadMethodCallException("The method $method in class $class does not exist");
+		
 		//call the method
 		$instance->$method();
 

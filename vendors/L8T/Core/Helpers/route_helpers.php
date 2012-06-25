@@ -5,7 +5,7 @@
  */
 
 /**
- * echo the url of the given router_id
+ * get the url of the given router_id
  * @param string $route_id
  * @throws \Exception
  * @return string
@@ -22,7 +22,7 @@ function get_url($route_id){
 	//FIXME: Is this trim ok?
 	$uri = trim($results[0]->uri, "/");
 	$base = get_base_url();
-	echo $base . '/' . $uri;
+	return $base . '/' . $uri;
 }
 
 /**
@@ -41,4 +41,14 @@ function asset($asset){
 function get_base_url(){
 	$base = preg_replace("/(\/\w+.php)/", "", $_SERVER['SCRIPT_NAME']);
 	return $base;
+}
+/**
+ * get the value of the parameter
+ */
+function l8t_parameter($parameter){
+	$params = parse_ini_file("app/config/parameters.ini", false);
+	if (isset($params[$parameter]))
+		return $params[$parameter];
+	else 
+		throw new \Exception("The parameter $parameter was not found");
 }

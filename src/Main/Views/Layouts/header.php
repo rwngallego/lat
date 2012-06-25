@@ -8,5 +8,5 @@
 </head>
 
 <body>
-<h1><a href="<?php get_url("welcome")?>" class="not-underline">Management system of employees timetable</a></h1>
+<h1><a href="<?php echo get_url("welcome")?>" class="not-underline">Management system of employees timetable</a></h1>
 

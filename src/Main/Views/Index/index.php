@@ -6,7 +6,7 @@
 	sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
 	Phasellus ullamcorper magna in leo faucibus pretium.</h3>
 <h2 class="center-text">
-	<a href="<?php get_url('login') ?>">Login</a>
+	<a href="<?php echo get_url('login') ?>">Login</a>
 </h2>
 <p class="center-text">
 	<img src="<?php asset('img/timetable.jpg');?>" width="300" height="220"

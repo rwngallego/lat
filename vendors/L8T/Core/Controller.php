@@ -2,6 +2,11 @@
 
 namespace L8T\Core;
 
+/**
+ * Base class for controllers
+ * @author rowinson
+ *
+ */
 class Controller{
 	
 	/**
@@ -15,12 +20,26 @@ class Controller{
 	}
 	
 	/**
-	 * get the doctrine entity manager
+	 * Get the doctrine entity manager
 	 * @return \Doctrine\ORM\EntityManager
 	 */
 	final public function getEntityManager(){
 		$doctrineLoader = DoctrineLoader::getInstance();
 		return $doctrineLoader->getEntityManager();
+	}
+	
+	/**
+	 * Redirect to the given url
+	 * @param string $url Must contain "http://" if it is absolute
+	 */
+	final public function redirect($url){
+		if (stripos($url, "http://")===false){
+			$host = $_SERVER['HTTP_HOST'];
+			$uri = rtrim($url, '/\\');
+			$url = "http://" . $host . $uri;
+		}
+		header('Location: ' . $url);
+		exit();
 	}
 	
 }

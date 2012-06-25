@@ -21,7 +21,7 @@ class FrontController{
 	private $pluginLoader;
 
 	/**
-	 * Starts the FrontController
+	 * Starts the framework components
 	 */
 	public function start(){
 		$this->pluginLoader = new PluginLoader("src/Plugins", "Plugins");

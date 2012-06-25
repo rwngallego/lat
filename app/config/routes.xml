@@ -2,14 +2,38 @@
 <routes>
 	<entry id="welcome">
 		<uri>/</uri>
-		<res>main:index:index</res>
+		<res>Main:Index:index</res>
 	</entry>
 	<entry id="login">
 		<uri>/login</uri>
-		<res>main:index:login</res>
+		<res>Main:Index:login</res>
 	</entry>
 	<entry id="logout">
-		<uri>/logoutUser</uri>
-		<res>main:index:logout</res>
+		<uri>/logout</uri>
+		<res>Main:Index:logout</res>
+	</entry>
+	<entry id="users_list">
+		<uri>/users/list</uri>
+		<res>Main:User:index</res>
+	</entry>
+	<entry id="user_add">
+		<uri>/users/add</uri>
+		<res>Main:User:add</res>
+	</entry>
+	<entry id="user_edit">
+		<uri>/users/edit</uri>
+		<res>Main:User:edit</res>
+	</entry>
+	<entry id="user_editUpdate">
+		<uri>/users/editUpdate</uri>
+		<res>Main:User:editUpdate</res>
+	</entry>
+	<entry id="user_delete">
+		<uri>/users/delete</uri>
+		<res>Main:User:delete</res>
+	</entry>
+	<entry id="employee_home">
+		<uri>/employee/home</uri>
+		<res>Main:Employee:index</res>
 	</entry>
 </routes>
