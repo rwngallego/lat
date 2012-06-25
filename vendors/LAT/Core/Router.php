@@ -1,6 +1,6 @@
 <?php
 
-namespace L8T\Core;
+namespace LAT\Core;
 
 /**
  * Router

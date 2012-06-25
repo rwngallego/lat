@@ -1,13 +1,13 @@
 <?php
 
-use L8T\ClassLoader;
+use LAT\ClassLoader;
 
 //Class loader
-require_once 'vendors/L8T/ClassLoader.php';
+require_once 'vendors/LAT/ClassLoader.php';
 
 //Register modules and libraries
 $classLoader = new ClassLoader(array(
-		'L8T' => 'vendors',
+		'LAT' => 'vendors',
 		'Plugins' => 'src',
 		'Main\\Controllers' => 'src',
 		'Main\\Entity' => 'src',

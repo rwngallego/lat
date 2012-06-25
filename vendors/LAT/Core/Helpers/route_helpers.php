@@ -45,7 +45,7 @@ function get_base_url(){
 /**
  * get the value of the parameter
  */
-function l8t_parameter($parameter){
+function lat_parameter($parameter){
 	$params = parse_ini_file("app/config/parameters.ini", false);
 	if (isset($params[$parameter]))
 		return $params[$parameter];

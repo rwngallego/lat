@@ -1,6 +1,6 @@
 <?php
 
-namespace L8T\Core;
+namespace LAT\Core;
 
 use Doctrine\ORM\EntityManager;
 
@@ -13,7 +13,7 @@ class DoctrineLoader{
 
 	/**
 	 * Instance
-	 * @var L8T\Core\DoctrineLoader
+	 * @var LAT\Core\DoctrineLoader
 	 */
 	private static $instance;
 	private function __construct() {
@@ -26,7 +26,7 @@ class DoctrineLoader{
 	}
 	/**
 	 * Retrieve an instance of the class
-	 * @return L8T\Core\DoctrineLoader
+	 * @return LAT\Core\DoctrineLoader
 	 */
 	public static function getInstance() {
 		if (! isset ( self::$instance )) {

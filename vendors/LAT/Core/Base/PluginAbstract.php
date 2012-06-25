@@ -1,6 +1,6 @@
 <?php
 
-namespace L8T\Core\Base;
+namespace LAT\Core\Base;
 
 /**
  * Abstract class for plugins

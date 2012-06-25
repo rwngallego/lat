@@ -3,7 +3,7 @@
 namespace Main\Controllers;
 
 use Main\Entity\User;
-use L8T\Core\Controller;
+use LAT\Core\Controller;
 
 /**
  * User controller

@@ -2,7 +2,7 @@
 
 namespace Main\Controllers;
 
-use L8T\Core\Controller;
+use LAT\Core\Controller;
 
 /**
  * Index controller

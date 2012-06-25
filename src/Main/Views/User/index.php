@@ -23,7 +23,7 @@
 		<td><?php echo $user->getName() ?></td>
 		<td><?php echo $user->getEmail() ?></td>
 		<td><?php echo $user->getRole() ?></td>
-		<td><?php echo $user->getLastAccess()->format(l8t_parameter("datetime_format"))?></td>
+		<td><?php echo $user->getLastAccess()->format(lat_parameter("datetime_format"))?></td>
 		<td><a href="<?php path("user_edit", array('id' => $user->getId()))?>">Edit</a>
 			<a href="<?php path("user_delete", array('id' => $user->getId()))?>">Delete</a>
 		</td>

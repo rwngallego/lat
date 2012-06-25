@@ -1,10 +1,10 @@
 <?php
 
-namespace L8T\Core;
+namespace LAT\Core;
 
-use L8T\Core\DoctrineLoader;
-use L8T\Core\PluginLoader;
-use L8T\Core\Router;
+use LAT\Core\DoctrineLoader;
+use LAT\Core\PluginLoader;
+use LAT\Core\Router;
 
 
 /**

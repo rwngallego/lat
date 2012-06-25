@@ -1,6 +1,6 @@
 <?php
 
-use L8T\Core\FrontController;
+use LAT\Core\FrontController;
 
 define('APPLICATION_ENV', getenv("APPLICATION_ENV"));
 

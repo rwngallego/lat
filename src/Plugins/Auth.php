@@ -2,7 +2,7 @@
 
 namespace Plugins;
 
-use L8T\Core\Base\PluginAbstract;
+use LAT\Core\Base\PluginAbstract;
 
 /**
  * Plugin class for auth issues
@@ -13,7 +13,7 @@ class Auth extends PluginAbstract {
 
 	/**
 	 * (non-PHPdoc)
-	 * @see \L8T\Core\Base\PluginAbstract::beforeRouterDispatch()
+	 * @see \LAT\Core\Base\PluginAbstract::beforeRouterDispatch()
 	 */
 	public function beforeRouterDispatch(){
 		session_start();

@@ -1,6 +1,6 @@
 <?php
 
-namespace L8T;
+namespace LAT;
 
 /**
  * ClassLoader implementation. Autoload classes using the SPL autoloader
