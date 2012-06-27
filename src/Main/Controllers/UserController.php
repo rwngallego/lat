@@ -8,7 +8,7 @@ use LAT\Core\Controller;
 /**
  * User controller
  *
- * @author rowinson
+ * @author Rowinson Gallego Medina <rwn.gallego@gmail.com>
  *        
  */
 class UserController extends Controller {

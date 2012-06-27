@@ -1,12 +1,27 @@
 <?php
 
+/**
+ * LAT Framework
+ *
+ * This file is part of the LAT framework.
+ *
+ * (c) Rowinson Gallego Medina <rwn.gallego@gmail.com>
+ *
+ * This source file is subject to the New BSD license that is bundled
+ * with this source code in the file LICENSE.txt
+ *
+ * @category LAT
+ * @package Core
+ * @license New BSD License
+ */
+
 namespace LAT\Core;
 
 use Doctrine\ORM\EntityManager;
 
 /**
  * Doctrine loader. Implements singleton
- * @author rowinson
+ * @author Rowinson Gallego Medina <rwn.gallego@gmail.com>
  *
  */
 class DoctrineLoader{

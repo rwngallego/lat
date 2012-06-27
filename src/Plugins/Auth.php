@@ -1,12 +1,28 @@
 <?php
 
+/**
+ * LAT Framework
+ *
+ * This file is part of the LAT framework.
+ *
+ * (c) Rowinson Gallego Medina <rwn.gallego@gmail.com>
+ *
+ * This source file is subject to the New BSD license that is bundled
+ * with this source code in the file LICENSE.txt
+ *
+ * @category LAT
+ * @package src/Plugins
+ * @subpackage Auth
+ * @license New BSD License
+ */
+
 namespace Plugins;
 
 use LAT\Core\Base\PluginAbstract;
 
 /**
  * Plugin class for auth issues
- * @author rowinson
+ * @author Rowinson Gallego Medina <rwn.gallego@gmail.com>
  *
  */
 class Auth extends PluginAbstract {

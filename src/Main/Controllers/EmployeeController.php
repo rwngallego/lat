@@ -5,7 +5,7 @@ use LAT\Core\Controller;
 
 /**
  * Employee controller
- * @author rowinson
+ * @author Rowinson Gallego Medina <rwn.gallego@gmail.com>
  *
  */
 class EmployeeController extends Controller{

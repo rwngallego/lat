@@ -6,7 +6,7 @@ use LAT\Core\Controller;
 
 /**
  * Index controller
- * @author rowinson
+ * @author Rowinson Gallego Medina <rwn.gallego@gmail.com>
  *
  */
 class IndexController extends Controller{
