@@ -2,6 +2,7 @@
 	<?php if ($_SESSION['role'] == "ADMIN"):?>
 	<tr>
 		<td><a href="<?php echo get_url("users_list")?>">System Users</a></td>
+		<td><a href="<?php echo get_url("schedule_home")?>">Schedules</a></td>
 		<td><a href="<?php echo get_url("logout")?>">Logout</a></td>
 	</tr>
 	<?php else:?>

@@ -37,9 +37,28 @@ class UserController extends Controller {
 	 * Add a user
 	 */
 	public function addAction() {
-		$this->renderView ( "Main:User:add.php", array (
-				'type' => 'add' 
-		) );
+		if ($_SERVER ['REQUEST_METHOD'] == "POST") {
+			$name = $_POST ["name"];
+			$email = $_POST ["email"];
+			$role = $_POST ["role"];
+			$password = $_POST ["password"];
+			
+			$em = $this->getEntityManager ();
+			
+			$user = new User ();
+			$user->setName ( $name )->setEmail ( $email )->setRole ( $role )->setPassword ( $password )->setLastAccess ( new \DateTime () );
+			
+			$em->persist ( $user );
+			$em->flush ();
+			
+			$_SESSION ['flashMessage'] = "The user was added successfully";
+			
+			$this->redirect ( get_url ( "users_list" ) );
+		} else {
+			$this->renderView ( "Main:User:add.php", array (
+					'type' => 'add' 
+			) );
+		}
 	}
 	
 	/**
@@ -112,6 +131,32 @@ class UserController extends Controller {
 	 * Delete a user
 	 */
 	public function deleteAction() {
+		if (! isset ( $_GET ['id'] ))
+			throw new \Exception ( "The id was not defined" );
+		
+		$id = $_GET ['id'];
+		
+		$em = $this->getEntityManager ();
+		$user = $em->getRepository ( "Main\\Entity\\User" )->find ( $id );
+		
+		if (! $user)
+			throw new \Exception ( "The user does not exist" );
+		
+		if ($_SERVER ['REQUEST_METHOD'] == "POST") {
+			
+			if ($_POST ["answer"] == "yes") {
+				$em->remove ( $user );
+				$em->flush ();
+				$_SESSION ['flashMessage'] = "The user was deleted successfully";
+			}
+			
+			$this->redirect ( get_url ( "users_list" ) );
+		} else {
+			
+			$this->renderView ( "Main:User:delete.php", array (
+					'user' => $user 
+			) );
+		}
 	}
 }
 

@@ -46,10 +46,12 @@ function render_view($path, $args = array()) {
 function path($route_id, $params = array()) {
 	$query_string = (count ( $params ) > 0) ? "?" : "";
 	
+	$i = 0;
 	foreach ( $params as $key => $value ) {
+		$query_string .= ($i++ != 0) ? "&": "";
+		
 		$key = urlencode ( $key );
 		$value = urlencode ( $value );
-		
 		$query_string .= $key . '=' . $value;
 	}
 	echo get_url ( $route_id ) . $query_string;

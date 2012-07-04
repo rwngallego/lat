@@ -3,6 +3,7 @@ LAT Framework - PHP
 
 It is a framework made for PHP that covers the basics and let you to use the PHP plain features "as is" :)
 
+
 Features:
 
 - MVC pattern
@@ -15,7 +16,6 @@ Features:
 Version: 1.0 (Alpha 1)
 
 Roadmap:
-- Forms support
 - Improve the autoloading of Entities
 - Improve the plugins logic
 - Improve the helpers logic (Encapsulate them in static methods)

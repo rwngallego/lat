@@ -32,8 +32,33 @@
 		<uri>/users/delete</uri>
 		<res>Main:User:delete</res>
 	</entry>
+	<entry id="schedule_home">
+		<uri>/schedule</uri>
+		<res>Main:Schedule:index</res>
+	</entry>
+	<entry id="schedule_list_for_employee">
+		<uri>/schedule/listForEmployee</uri>
+		<res>Main:Schedule:listForEmployee</res>
+	</entry>
+	<entry id="schedule_add">
+		<uri>/schedule/add</uri>
+		<res>Main:Schedule:add</res>
+	</entry>
+	<entry id="schedule_delete">
+		<uri>/schedule/delete</uri>
+		<res>Main:Schedule:delete</res>
+	</entry>
+	<entry id="turn_add">
+		<uri>/turn/add</uri>
+		<res>Main:Schedule:addTurn</res>
+	</entry>
+	<entry id="turn_delete">
+		<uri>/turn/delete</uri>
+		<res>Main:Schedule:deleteTurn</res>
+	</entry>
 	<entry id="employee_home">
 		<uri>/employee/home</uri>
 		<res>Main:Employee:index</res>
 	</entry>
+	
 </routes>

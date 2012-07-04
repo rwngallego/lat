@@ -22,12 +22,12 @@ class Turn {
 	// properties
 	
 	/**
-	 * @Column(type="datetime")
+	 * @Column(type="smallint")
 	 */
 	protected $startTime;
 	
 	/**
-	 * @Column(type="datetime")
+	 * @Column(type="smallint")
 	 */
 	protected $endTime;
 	
@@ -46,7 +46,7 @@ class Turn {
     /**
      * Set startTime
      *
-     * @param datetime $startTime
+     * @param smallint $startTime
      * @return Turn
      */
     public function setStartTime($startTime)
@@ -58,7 +58,7 @@ class Turn {
     /**
      * Get startTime
      *
-     * @return datetime 
+     * @return smallint 
      */
     public function getStartTime()
     {
@@ -68,7 +68,7 @@ class Turn {
     /**
      * Set endTime
      *
-     * @param datetime $endTime
+     * @param smallint $endTime
      * @return Turn
      */
     public function setEndTime($endTime)
@@ -80,7 +80,7 @@ class Turn {
     /**
      * Get endTime
      *
-     * @return datetime 
+     * @return smallint 
      */
     public function getEndTime()
     {
