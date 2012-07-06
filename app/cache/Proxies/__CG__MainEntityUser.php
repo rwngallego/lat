@@ -42,6 +42,15 @@ class User extends \Main\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     }
 
     
+    public function getId()
+    {
+        if ($this->__isInitialized__ === false) {
+            return (int) $this->_identifier["id"];
+        }
+        $this->__load();
+        return parent::getId();
+    }
+
     public function setEmail($email)
     {
         $this->__load();
@@ -50,9 +59,6 @@ class User extends \Main\Entity\User implements \Doctrine\ORM\Proxy\Proxy
 
     public function getEmail()
     {
-        if ($this->__isInitialized__ === false) {
-            return $this->_identifier["email"];
-        }
         $this->__load();
         return parent::getEmail();
     }
@@ -81,58 +87,46 @@ class User extends \Main\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         return parent::getName();
     }
 
-    public function setBirthdate($birthdate)
+    public function setRole($role)
     {
         $this->__load();
-        return parent::setBirthdate($birthdate);
+        return parent::setRole($role);
     }
 
-    public function getBirthdate()
+    public function getRole()
     {
         $this->__load();
-        return parent::getBirthdate();
+        return parent::getRole();
     }
 
-    public function setGender($gender)
+    public function setLastAccess($lastAccess)
     {
         $this->__load();
-        return parent::setGender($gender);
+        return parent::setLastAccess($lastAccess);
     }
 
-    public function getGender()
+    public function getLastAccess()
     {
         $this->__load();
-        return parent::getGender();
+        return parent::getLastAccess();
     }
 
-    public function setPhone($phone)
+    public function addSchedule(\Main\Entity\Schedule $schedules)
     {
         $this->__load();
-        return parent::setPhone($phone);
+        return parent::addSchedule($schedules);
     }
 
-    public function getPhone()
+    public function getSchedules()
     {
         $this->__load();
-        return parent::getPhone();
-    }
-
-    public function setImageUniqueId($imageUniqueId)
-    {
-        $this->__load();
-        return parent::setImageUniqueId($imageUniqueId);
-    }
-
-    public function getImageUniqueId()
-    {
-        $this->__load();
-        return parent::getImageUniqueId();
+        return parent::getSchedules();
     }
 
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'email', 'password', 'name', 'birthdate', 'gender', 'phone', 'imageUniqueId');
+        return array('__isInitialized__', 'id', 'email', 'password', 'name', 'lastAccess', 'role', 'schedules');
     }
 
     public function __clone()

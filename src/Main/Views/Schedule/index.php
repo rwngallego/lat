@@ -13,13 +13,13 @@
 				<label for="employee">Employee:</label>
 				<select id="employee" name="employee">
 				<?php foreach($employees as $employee):?>
-					<option value="<?php echo $employee["id"]?>"><?php echo $employee['name']?></option>
+					<option value="<?php echo $employee["id"]?>" <?php echo $user == $employee['id']? 'selected': '';?>><?php echo $employee['name']?></option>
 				<?php endforeach;?>
 				</select>
 			</td>
 			<td>
 				<label for="date">Date</label>
-				<input type="textbox" value="<?php echo date("Y-m-d")?>" name="date" id="date-selector"/>
+				<input type="textbox" value="<?php echo $date->format('Y-m-d')?>" name="date" id="date-selector"/>
 			</td>
 		</tr>
 	</table>

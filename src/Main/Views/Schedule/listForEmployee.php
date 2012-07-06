@@ -1,7 +1,7 @@
 <?php $dayOfWeek = date("w", strtotime($date));?>
-<div class="actions-menu" style="margin-top: 10px;">
-	<a title="Add schedule"
-		href="<?php path("schedule_add", array('date' => $date, 'id' => $id))?>">
+<div class="actions-menu" style="margin-top: 10px; height: 40px;">
+	<a title="Add schedule" id="add-schedule"
+		href="<?php path("schedule_add", array('date' => $date, 'id' => $userId))?>">
 		<img src="<?php asset("img/add")?>" /><span>Add schedule</span>
 	</a>
 </div>
@@ -15,13 +15,25 @@
 			<th>Thursday</th>
 			<th>Friday</th>
 			<th>Saturday</th>
-		    <th>Sunday</th>
+			<th>Sunday</th>
 		</tr>
 		<tr>
 		<?php for($i=1; $i<=7; $i++):?>
 				<?php if (in_array($i, $daysList) == true || ($i == 7 && in_array(0, $daysList))):?>
-					<td style="font-size: 12px;"><a href="<?php ?>">Delete schedule</a>
-					<a href="<?php ?>">+Add turn</a></td>
+					<?php if ($i == $dayOfWeek || ($i== 7 && $dayOfWeek== 0 )):?>
+						<?php $pos = array_search($i, $daysList);?>
+						<td style="font-size: 12px;">
+							<a href="<?php path('schedule_delete', array('id' => $pos)); ?>">Delete schedule</a>
+							<a href="<?php path('turn_add', array('scheduleId' => $pos, 'userId'=> $userId))?>">+Add turn</a>
+						</td>
+						<script type="text/javascript">
+							//hides the add button
+							$("#add-schedule").hide();
+						</script>
+					<?php else:?>
+						<td style="background-color: aqua;"></td>
+					<?php endif;?>
+					
 				<?php else:?>
 					<td>&nbsp;</td>
 				<?php endif;?>

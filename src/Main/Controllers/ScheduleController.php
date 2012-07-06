@@ -22,6 +22,16 @@ class ScheduleController extends Controller {
 		
 		$employees = $em->getRepository ( "Main\\Entity\\User" )->getAllEmployees ();
 		
+		if (isset ( $_SESSION ['userSchedule'] ))
+			$user = $_SESSION ['userSchedule'];
+		else
+			$user = $employees[0]['id'];
+		
+		if (isset ( $_SESSION ["dateSchedule"] ))
+			$date = $_SESSION ["dateSchedule"];
+		else
+			$date = new \DateTime ();
+		
 		$message = "";
 		if (isset ( $_SESSION ['flashMessage'] )) {
 			$message = $_SESSION ['flashMessage'];
@@ -30,7 +40,9 @@ class ScheduleController extends Controller {
 		
 		$this->renderView ( "Main:Schedule:index.php", array (
 				'employees' => $employees,
-				'message' => $message 
+				'message' => $message,
+				'user' => $user,
+				'date' => $date 
 		) );
 	}
 	
@@ -39,18 +51,21 @@ class ScheduleController extends Controller {
 	 */
 	public function listForEmployeeAction() {
 		// get id from POST... and then the other stuff
-		$id = $_POST ['id'];
+		$userId = $_POST ['id'];
 		$date = $_POST ['date'];
 		
 		$timestap = strtotime ( $date );
 		$week = date ( "W", $timestap );
 		$year = date ( "Y", $timestap );
 		
+		$_SESSION ["dateSchedule"] = new \DateTime ( $date );
+		$_SESSION["userSchedule"] = $userId;
+		
 		$dateInterval = $this->getDateIntervalFromWeek ( $week, $year );
-		$daysList = $this->getEntityManager ()->getRepository ( "Main\\Entity\\Schedule" )->getAvaibleByInterval ( $dateInterval );
+		$daysList = $this->getEntityManager ()->getRepository ( "Main\\Entity\\Schedule" )->getAvaibleByInterval ( $userId, $dateInterval );
 		
 		$this->renderView ( "Main:Schedule:listForEmployee.php", array (
-				'id' => $id,
+				'userId' => $userId,
 				'date' => $date,
 				'daysList' => $daysList 
 		) );
@@ -90,6 +105,37 @@ class ScheduleController extends Controller {
 				'user' => $user,
 				'date' => $date 
 		) );
+	}
+	
+	/**
+	 * Delete a schedule
+	 */
+	public function deleteAction() {
+		$em = $this->getEntityManager ();
+		
+		if (! isset ( $_GET ['id'] ))
+			throw new \Exception ( "The id was not defined" );
+		$id = $_GET ['id'];
+		$schedule = $em->getRepository ( "Main\\Entity\\Schedule" )->find ( $id );
+		
+		if (! $schedule)
+			throw new \Exception ( "The schedule does not exist" );
+		
+		if ($_SERVER ['REQUEST_METHOD'] == "POST") {
+			
+			if ($_POST ["answer"] == "yes") {
+				$em->remove ( $schedule );
+				$em->flush ();
+				$_SESSION ['flashMessage'] = "The schedule was deleted successfully";
+			}
+			
+			$this->redirect ( get_url ( "schedule_home" ) );
+		} else {
+			
+			$this->renderView ( "Main:Schedule:delete.php", array (
+					'schedule' => $schedule 
+			) );
+		}
 	}
 	
 	/**

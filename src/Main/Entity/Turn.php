@@ -3,7 +3,7 @@
 namespace Main\Entity;
 
 /**
- * @entity
+ * @entity(repositoryClass="Main\Entity\TurnRepository")
  */
 class Turn {
 	
@@ -17,7 +17,7 @@ class Turn {
 	/**
 	 * @ManyToOne(targetEntity="Schedule", inversedBy="turns")
 	 */
-	protected $turns;
+	protected $schedule;
 	
 	// properties
 	
@@ -88,24 +88,24 @@ class Turn {
     }
 
     /**
-     * Set turns
+     * Set schedule
      *
-     * @param Main\Entity\Schedule $turns
+     * @param Main\Entity\Schedule $schedule
      * @return Turn
      */
-    public function setTurns(\Main\Entity\Schedule $turns = null)
+    public function setSchedule(\Main\Entity\Schedule $schedule = null)
     {
-        $this->turns = $turns;
+        $this->schedule = $schedule;
         return $this;
     }
 
     /**
-     * Get turns
+     * Get schedule
      *
      * @return Main\Entity\Schedule 
      */
-    public function getTurns()
+    public function getSchedule()
     {
-        return $this->turns;
+        return $this->schedule;
     }
 }
