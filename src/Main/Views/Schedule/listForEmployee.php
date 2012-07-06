@@ -1,4 +1,4 @@
-<?php $dayOfWeek = date("w", strtotime($date));?>
+<?php $dayOfWeek = $date->format("w");?>
 <div class="actions-menu" style="margin-top: 10px; height: 40px;">
 	<a title="Add schedule" id="add-schedule"
 		href="<?php path("schedule_add", array('date' => $date, 'id' => $userId))?>">
