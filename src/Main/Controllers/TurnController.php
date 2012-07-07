@@ -29,7 +29,7 @@ class TurnController extends Controller {
 			throw new \Exception ( "The schedule was not found" );
 		
 		$avaibleTurns = $this->_getAvaibleTurns ( $turnRepository, $scheduleId );
-
+		
 		$userId = $_GET ['userId'];
 		$user = $userRepository->find ( $userId );
 		if ($user == null)
@@ -60,7 +60,7 @@ class TurnController extends Controller {
 	
 	/**
 	 * Get the avaible turns in the schedule
-	 * 
+	 *
 	 * @param TurnRepository $turnsRepository        	
 	 * @param integer $scheduleId        	
 	 * @return array
@@ -92,8 +92,11 @@ class TurnController extends Controller {
 			for($i = $start; $i <= $end; $i ++) {
 				$busy [] = $i;
 			}
-			$avaible = array_diff ( $avaible, $busy );
+			$avaible = array_values ( array_diff ( $avaible, $busy ) );
 		}
+		if (isset($avaible[0]) && $avaible [0] > 8)
+			$avaible [] = $avaible [0] - 1;
+		sort($avaible);
 		
 		return $avaible;
 	}
