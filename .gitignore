@@ -1,5 +1,4 @@
 .settings
 .buildpath
 .project
-vendors/Doctrine
 app/cache/*

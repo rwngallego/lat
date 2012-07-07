@@ -7,10 +7,9 @@
 	</tr>
 	<?php else:?>
 	<tr>
-		<td><a href="consultar_horario_semanal.html">Horario semanal</a></td>
-		<td><a href="consultar_horario_mensual.html">Horario mensual</a></td>
-		<td><a href="reporte_mensual.html">Reporte mensual</a></td>
-		<td><a href="reporte_global.html">Reporte global</a></td>
+		<td><a href="<?php echo get_url("employee_schedule_weekly")?>">Weekle schedule</a></td>
+		<td><a href="<?php echo get_url("employee_schedule_monthly")?>">Monthly schedule</a></td>
+		<td><a href="<?php echo get_url("employee_payment")?>">Payment</a></td>
 		<td><a href="<?php echo get_url("logout")?>">Logout</a></td>
 	</tr>
 	<?php endif;?>

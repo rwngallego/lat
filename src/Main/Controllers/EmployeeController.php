@@ -14,7 +14,11 @@ class EmployeeController extends Controller{
 	 * List the schedule of the employee
 	 */
 	public function indexAction(){
-		
+		$this->renderView ( "Main:User:index.php", array (
+				'users' => array(),
+				'message' => $message,
+				'type' => 'view'
+		) );
 	}
 	
 }
