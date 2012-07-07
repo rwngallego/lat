@@ -50,24 +50,31 @@ class ScheduleController extends Controller {
 	 * Get the list of schedules for the employee
 	 */
 	public function listForEmployeeAction() {
+		$em = $this->getEntityManager();
+		$scheduleRepository = $em->getRepository("Main\\Entity\\Schedule");
+		$turnsRepository = $em->getRepository("Main\\Entity\\Schedule");
 		// get id from POST... and then the other stuff
 		$userId = $_POST ['id'];
-		$date = $_POST ['date'];
+		$date = new \DateTime($_POST ['date']);
 		
-		$timestap = strtotime ( $date );
+		$timestap = $date->getTimestamp();
 		$week = date ( "W", $timestap );
 		$year = date ( "Y", $timestap );
 		
-		$_SESSION ["dateSchedule"] = new \DateTime ( $date );
+		$_SESSION ["dateSchedule"] = $date;
 		$_SESSION["userSchedule"] = $userId;
 		
+		$schedule = $scheduleRepository->findOneBy(array('user' => $userId, 'date' => $date));
+		$turns = $turnsRepository->findBy(array('schedule' => $schedule->getId()));
+		
 		$dateInterval = $this->getDateIntervalFromWeek ( $week, $year );
-		$daysList = $this->getEntityManager ()->getRepository ( "Main\\Entity\\Schedule" )->getAvaibleByInterval ( $userId, $dateInterval );
+		$daysList = $scheduleRepository->getAvaibleByInterval ( $userId, $dateInterval );
 		
 		$this->renderView ( "Main:Schedule:listForEmployee.php", array (
 				'userId' => $userId,
 				'date' => $date,
-				'daysList' => $daysList 
+				'daysList' => $daysList,
+				'turns' => $turns
 		) );
 	}
 	
