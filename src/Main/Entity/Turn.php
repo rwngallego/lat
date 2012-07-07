@@ -16,6 +16,9 @@ class Turn {
 	
 	/**
 	 * @ManyToOne(targetEntity="Schedule", inversedBy="turns")
+	 * @JoinColumns({
+     *   @JoinColumn(name="Schedule_id", referencedColumnName="id", nullable=false)
+     * })
 	 */
 	protected $schedule;
 	

@@ -1,6 +1,5 @@
 <?php
 $dayOfWeek = $date->format("w");
-//print_r($turns);
 ?>
 <div class="actions-menu" style="margin-top: 10px; height: 40px;">
 	<a title="Add schedule" id="add-schedule"
@@ -47,7 +46,13 @@ $dayOfWeek = $date->format("w");
 			<td><?php echo $i . ' - ' . ($i+1);?></td>
 			<?php for($j=1; $j<=7; $j++):?>
 				<?php if ($j == $dayOfWeek || ($j == 7) && $dayOfWeek == 0):?>
-				<td style="border: red dashed 1px;">&nbsp;</td>
+					<td style="border: red dashed 1px;">
+					<?php foreach($turns as $turn):?>
+						<?php if ($i >= $turn->getStartTime() && $i < $turn->getEndTime()):?>
+							Full<?php break;?>
+						<?php endif;?>
+					<?php endforeach;?>
+					</td>
 				<?php else:?>
 				<td>&nbsp;</td>
 				<?php endif;?>

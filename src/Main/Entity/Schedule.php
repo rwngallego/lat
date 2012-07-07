@@ -16,6 +16,9 @@ class Schedule {
 	
 	/**
 	 * @ManyToOne(targetEntity="User", inversedBy="schedules")
+	 * @JoinColumns({
+     *   @JoinColumn(name="User_id", referencedColumnName="id", nullable=false)
+     * })
 	 */
 	protected $user;
 	
