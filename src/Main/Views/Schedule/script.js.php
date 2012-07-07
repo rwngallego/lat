@@ -20,7 +20,7 @@ function updateList(){
 		type : "POST",
 		data : {
 			id : id,
-			scheduleId: "<?php echo $scheduleId?>",
+			date: date,
 		},
 		url : "<?php path("schedule_list_for_employee")?>"
 	}).done(function(data) {

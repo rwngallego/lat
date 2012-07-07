@@ -59,6 +59,37 @@ class TurnController extends Controller {
 	}
 	
 	/**
+	 * Delete a turn
+	 */
+	public function deleteAction() {
+		$em = $this->getEntityManager ();
+	
+		if (! isset ( $_GET ['turnId'] ))
+			throw new \Exception ( "The id was not defined" );
+		$id = $_GET ['turnId'];
+		$turn = $em->getRepository ( "Main\\Entity\\Turn" )->find ( $id );
+	
+		if (! $turn)
+			throw new \Exception ( "The turn does not exist" );
+	
+		if ($_SERVER ['REQUEST_METHOD'] == "POST") {
+	
+			if ($_POST ["answer"] == "yes") {
+				$em->remove ( $turn );
+				$em->flush ();
+				$_SESSION ['flashMessage'] = "The turn was deleted successfully";
+			}
+	
+			$this->redirect ( get_url ( "schedule_home" ) );
+		} else {
+	
+			$this->renderView ( "Main:Turn:delete.php", array (
+					'turn' => $turn
+			) );
+		}
+	}
+	
+	/**
 	 * Get the avaible turns in the schedule
 	 *
 	 * @param TurnRepository $turnsRepository        	

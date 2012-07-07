@@ -1,5 +1,6 @@
 <?php
 $dayOfWeek = $date->format("w");
+$color = rand_colorCode();
 ?>
 <div class="actions-menu" style="margin-top: 10px; height: 40px;">
 	<a title="Add schedule" id="add-schedule"
@@ -46,12 +47,23 @@ $dayOfWeek = $date->format("w");
 			<td><?php echo $i . ' - ' . ($i+1);?></td>
 			<?php for($j=1; $j<=7; $j++):?>
 				<?php if ($j == $dayOfWeek || ($j == 7) && $dayOfWeek == 0):?>
-					<td style="border: red dashed 1px;">
-					<?php foreach($turns as $turn):?>
-						<?php if ($i >= $turn->getStartTime() && $i < $turn->getEndTime()):?>
-							Full<?php break;?>
-						<?php endif;?>
-					<?php endforeach;?>
+					<td style="border: red dashed 1px; font-size: 10px;">
+					<?php 
+					
+					foreach($turns as $turn){
+						 if ($i >= $turn->getStartTime() && $i < $turn->getEndTime()){
+						 	if ($i == $turn->getStartTime()){
+						 		$color = rand_colorCode();
+						 		echo "<div style=\"border: black solid 2px; text-align: right; background-color:$color\">";
+						 		echo "<a style=\"color: black;\" href=\"";
+						 		path("turn_delete", array('turnId'=>$turn->getId()));
+						 		echo "\">Delete</a>";
+						 		echo "</div>";
+						 	}else
+								echo "<div style=\"border: black solid 2px; background-color:$color\">&nbsp;</div>";
+							break;
+						 }
+					}?>
 					</td>
 				<?php else:?>
 				<td>&nbsp;</td>
@@ -60,5 +72,17 @@ $dayOfWeek = $date->format("w");
 		</tr>
 		<?php endfor;?>
 	</table>
-
 </div>
+<?php 
+function rand_colorCode(){
+	$r = dechex(mt_rand(0,255)); // generate the red component
+	$g = dechex(mt_rand(0,255)); // generate the green component
+	$b = dechex(mt_rand(0,255)); // generate the blue component
+	$rgb = $r.$g.$b;
+	return '#'.$rgb;
+	if($r == $g && $g == $b){
+		$rgb = substr($rgb,0,3); // shorter version
+	}
+	return '#'.$rgb;
+}
+?>
