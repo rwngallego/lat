@@ -16,14 +16,21 @@ class EmployeeController extends Controller{
 	public function indexAction(){
 		$em = $this->getEntityManager();
 		$userId = $_SESSION['userId'];
+		
+		if (isset ( $_SESSION ["dateSchedule"] ))
+			$date = $_SESSION ["dateSchedule"];
+		else
+			$date = new \DateTime ();
+		
 		$user = $em->getRepository("Main\\Entity\\User")->find($userId);
+		
 		$this->renderView ( "Main:Employee:index.php", array (
 				'employees' => array(array(
 						'id' => $user->getId(),
 						'name' => $user->getName())),
 				'message' => "",
-				'user' => $user,
-				'date' => new \DateTime(),
+				'user' => $user->getId(),
+				'date' => $date,
 		) );
 	}
 	

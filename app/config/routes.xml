@@ -48,6 +48,18 @@
 		<uri>/schedule/delete</uri>
 		<res>Main:Schedule:delete</res>
 	</entry>
+	<entry id="reports_employee_all">
+		<uri>/reports/all</uri>
+		<res>Main:Reports:all</res>
+	</entry>
+	<entry id="reports_employee_one">
+		<uri>/reports/one</uri>
+		<res>Main:Reports:one</res>
+	</entry>
+	<entry id="reports_employee_list">
+		<uri>/reports/list</uri>
+		<res>Main:Reports:listForEmployee</res>
+	</entry>
 	<entry id="turn_add">
 		<uri>/turn/add</uri>
 		<res>Main:Turn:add</res>
@@ -67,9 +79,5 @@
 	<entry id="employee_schedule_monthly">
 		<uri>/employee/monthly</uri>
 		<res>Main:Employee:monthly</res>
-	</entry>
-		<entry id="employee_payment">
-		<uri>/employee/payment</uri>
-		<res>Main:Employee:payment</res>
 	</entry>
 </routes>

@@ -2,7 +2,7 @@
 <?php render_view("Main:Layouts:menu.php"); ?>
 <div class="actions-menu">
 	<a title="Add user" href="<?php path("user_add")?>"> <img
-		src="<?php asset("img/add")?>" /><span>Add</span>
+		src="<?php asset("img/add")?>" alt="Add"/><span>Add</span>
 	</a>
 </div>
 

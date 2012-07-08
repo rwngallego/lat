@@ -6,20 +6,20 @@
 <div class="message-alert"><?php echo $message;?></div>
 <?php endif;?>
 
-<form style="width: 500px;">
+<form style="width: 500px;" action="">
 	<table>
 		<tr>
 			<td>
 				<label for="employee">Employee:</label>
 				<select id="employee" name="employee">
 				<?php foreach($employees as $employee):?>
-					<option value="<?php echo $employee["id"]?>" <?php echo $user == $employee['id']? 'selected': '';?>><?php echo $employee['name']?></option>
+					<option value="<?php echo $employee["id"]?>" <?php echo $user == $employee['id']? 'selected="selected"': '';?>><?php echo $employee['name']?></option>
 				<?php endforeach;?>
 				</select>
 			</td>
 			<td>
-				<label for="date">Date</label>
-				<input type="textbox" value="<?php echo $date->format('Y-m-d')?>" name="date" id="date-selector"/>
+				<label for="date-selector">Date</label>
+				<input type="text" value="<?php echo $date->format('Y-m-d')?>" name="date" id="date-selector"/>
 			</td>
 		</tr>
 	</table>

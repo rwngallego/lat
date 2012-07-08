@@ -5,7 +5,7 @@ $color = rand_colorCode();
 <div class="actions-menu" style="margin-top: 10px; height: 40px;">
 	<a title="Add schedule" id="add-schedule"
 		href="<?php path("schedule_add", array('date' => $date->format("Y-m-d"), 'id' => $userId))?>">
-		<img src="<?php asset("img/add")?>" /><span>Add schedule</span>
+		<img src="<?php asset("img/add")?>" alt="Add"/><span>Add schedule</span>
 	</a>
 </div>
 <div>

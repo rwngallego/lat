@@ -1,6 +1,6 @@
 <?php render_view("Main:Layouts:header.php"); ?>
 <?php render_view("Main:Layouts:menu.php"); ?>
-<?php render_view("Main:Schedule:script.js.php", array('type' => 'edit'))?>
+<?php render_view("Main:Reports:script.js.php")?>
 
 <?php if (isset($message) && $message != ""):?>
 <div class="message-alert"><?php echo $message;?></div>
@@ -18,8 +18,15 @@
 				</select>
 			</td>
 			<td>
-				<label for="date-selector">Date</label>
-				<input type="text" value="<?php echo $date->format('Y-m-d')?>" name="date" id="date-selector"/>
+				<label for="month">Month</label>
+				<select id="month" name="month">
+					<option value="-1">All</option>
+					<?php for($i=1; $i<=12; $i++):?>
+						<option value="<?php echo str_pad($i, 2, "0", STR_PAD_LEFT)?>" <?php echo ($month==$i) ? 'selected="selected"' : "";?>>
+							<?php echo str_pad($i, 2, "0", STR_PAD_LEFT)?>
+						</option>
+					<?php endfor;?>
+				</select>
 			</td>
 		</tr>
 	</table>

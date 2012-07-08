@@ -26,6 +26,28 @@ EM;
 		else
 			return true;
 	}
+	
+	/**
+	 * Get all the turns of the user in the given month
+	 * @param integer $month
+	 * @param integer $userId
+	 * @return multitype:
+	 */
+	public function getAllByMonthEmployee($month, $userId){
+		$em = $this->getEntityManager();
+
+		$dql = <<<EM
+		SELECT t, s FROM Main\\Entity\\Schedule s
+		LEFT JOIN s.turns t
+		WHERE s.user = :userId AND SUBSTRING(s.date, 6, 2) = :month
+		ORDER BY s.date ASC
+EM;
+		$query = $em->createQuery($dql);
+		$query->setParameter("month", $month);
+		$query->setParameter("userId", $userId);
+		$results = $query->getArrayResult();
+		return $results;
+	}
 }
 
 ?>
