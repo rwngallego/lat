@@ -78,7 +78,7 @@ class ScheduleController extends Controller {
 				'userId' => $userId,
 				'date' => $date,
 				'daysList' => $daysList,
-				'turns' => $turns
+				'turns' => $turns,
 		) );
 	}
 

@@ -1,6 +1,6 @@
 <?php render_view("Main:Layouts:header.php"); ?>
 <?php render_view("Main:Layouts:menu.php"); ?>
-<?php render_view("Main:Schedule:script.js.php", array('type' => 'edit'))?>
+<?php render_view("Main:Schedule:script.js.php", array('type' => 'view'))?>
 
 <?php if (isset($message) && $message != ""):?>
 <div class="message-alert"><?php echo $message;?></div>

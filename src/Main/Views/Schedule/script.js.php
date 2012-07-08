@@ -20,9 +20,9 @@ function updateList(){
 		type : "POST",
 		data : {
 			id : id,
-			date: date,
+			date: date
 		},
-		url : "<?php path("schedule_list_for_employee")?>"
+		url : "<?php $type=="edit" ? path("schedule_list_for_employee") : path("employee_schedule_weekly_list"); ?>"
 	}).done(function(data) {
 		$("#schedule-view").html(data);
 	});

@@ -56,17 +56,17 @@
 		<uri>/turn/delete</uri>
 		<res>Main:Turn:delete</res>
 	</entry>
-	<entry id="employee_home">
-		<uri>/employee/home</uri>
+	<entry id="employee_schedule_weekly_list">
+		<uri>/employee/weekly/list</uri>
+		<res>Main:Employee:weeklyList</res>
+	</entry>
+	<entry id="employee_schedule_weekly">
+		<uri>/employee/weekly</uri>
 		<res>Main:Employee:index</res>
 	</entry>
 	<entry id="employee_schedule_monthly">
 		<uri>/employee/monthly</uri>
 		<res>Main:Employee:monthly</res>
-	</entry>
-	<entry id="employee_schedule_weekly">
-		<uri>/employee/weekly</uri>
-		<res>Main:Employee:weekly</res>
 	</entry>
 		<entry id="employee_payment">
 		<uri>/employee/payment</uri>

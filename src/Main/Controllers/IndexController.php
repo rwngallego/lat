@@ -57,7 +57,7 @@ class IndexController extends Controller {
 		if ($role == "ADMIN")
 			$this->redirect ( get_url ( "users_list" ) );
 		else
-			$this->redirect ( get_url ( "employee_home" ) );
+			$this->redirect ( get_url ( "employee_schedule_weekly" ) );
 	}
 	
 	/**
